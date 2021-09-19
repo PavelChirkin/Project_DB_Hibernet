@@ -52,7 +52,7 @@ public class SessionFactoryProvider {
 
         properties.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQL94Dialect");
         properties.put(Environment.DRIVER, "org.postgresql.Driver");
-        properties.put(Environment.URL, "jdbc:postgresql://localhost/hibernate");
+        properties.put(Environment.URL, "jdbc:postgresql://localhost/project_db_hibernate");
         properties.put(Environment.USER, "postgres");
         properties.put(Environment.PASS, "PostG2Pasha");
         properties.put(Environment.SHOW_SQL, "true");

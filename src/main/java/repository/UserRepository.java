@@ -28,7 +28,7 @@ public class UserRepository {
 
     public List<String> getUserNames() {
         return getUserInformation(session -> {
-            Query query = session.createQuery("select name from User", String.class);
+            Query query = session.createQuery("select userName from User", String.class);
             return query.list();
         });
     }

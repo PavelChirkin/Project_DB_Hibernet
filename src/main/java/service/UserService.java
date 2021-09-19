@@ -11,11 +11,12 @@ public class UserService {
     public UserService() {
         userRepository = new UserRepository();
     }
-/*
+
+
     public void createUser() {
-        User user = new User(null, "Andrius", "Baltrunas");
+        User user = new User(null, "Pavel", "Chirkin", 'T', "pavelch", "32165531");
         userRepository.createNewUser(user);
-    }   */
+    }
 
     public void getUsers() {
         userRepository.getUsers().forEach(System.out::println);
