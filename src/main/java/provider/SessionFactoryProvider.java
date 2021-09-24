@@ -1,7 +1,7 @@
 package provider;
 
 
-import entity.User;
+import entity.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -26,7 +26,10 @@ public class SessionFactoryProvider {
 
             //add annotated class
             configuration.addAnnotatedClass(User.class);
-            //configuration.addAnnotatedClass(Passport.class);
+            configuration.addAnnotatedClass(Exam.class);
+            configuration.addAnnotatedClass(Question.class);
+            //configuration.addAnnotatedClass(ExamAttempt.class);
+            //configuration.addAnnotatedClass(ExamAttemptAnswer.class);
 
             StandardServiceRegistry registry = new StandardServiceRegistryBuilder().applySettings(properties).build();
             sessionFactory = configuration.buildSessionFactory(registry);

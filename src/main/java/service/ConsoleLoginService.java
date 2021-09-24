@@ -10,11 +10,12 @@ import repository.UserRepository;
 
 public class ConsoleLoginService {
 
-     UserRepository userRepository = new UserRepository();
+    UserRepository userRepository = new UserRepository();
+    private List<User> users = new ArrayList<>();
 
-    private List<User> users = userRepository.getUsers();
 
     public void registration(Scanner sc) {
+        users = userRepository.getUsers();
         System.out.println("*** User Registration ***");
 
         System.out.println("Insert Your Name");
@@ -24,9 +25,20 @@ public class ConsoleLoginService {
 
         String userName = getUniqueUserName(sc);
         String password = getCorrectPassword(sc);
+        char userType;
+        if(userName.equals("pasha")) {
+            userType = 'T';
+        }else {
+            userType = 'S';
+        }
+        User user = new User(null, name, surname, userType, userName, password);
+        //if (users != null && !users.isEmpty()){
+            users.add(user);
+        //}else{
+            //List<User> users = ArrayList<User>();
+            //users.add(user);
+        //}
 
-        User user = new User(null, name, surname, 'S', userName, password);
-        users.add(user);
         userRepository.createNewUser(user);
         System.out.println("User successfully registered");
     }
@@ -73,20 +85,22 @@ public class ConsoleLoginService {
 
     private String getUniqueUserName(Scanner sc) {
         String userName;
-        boolean uniqueName = true;
-        String text = "Please insert username";
+        boolean notUniqueName;
         do {
-            System.out.println(text);
+            notUniqueName = false;
+            System.out.println("Please insert username");
             userName = sc.nextLine();
             //Check existing UserNames
-            for (User var : users)
-            {
-                if(var.getUserName().equals(userName)) {
-                    uniqueName = false;
+
+            if (users != null && !users.isEmpty()) {
+                for (User var : users) {
+                    if (var.getUserName().equals(userName)) {
+                        notUniqueName = true;
+                        System.out.println("This name exist please insert another one");
+                    }
                 }
             }
-            text = "This name exist please insert another one";
-        }while(userName != null & uniqueName);
+        }while(notUniqueName & userName.length() > 0);
 
         return userName;
     }
