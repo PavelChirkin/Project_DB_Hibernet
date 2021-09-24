@@ -1,3 +1,4 @@
+import entity.Exam;
 import entity.User;
 
 //import service.UserService;
@@ -90,6 +91,7 @@ public class Main {
         }
     }
     public void studentMenu(User user, Scanner sc){
+        ExamService examService = new ExamService();
         boolean studentWork = true;
         while (studentWork) {
             System.out.println(" ___________________________________");
@@ -101,8 +103,8 @@ public class Main {
             String select1 = sc.nextLine();
             switch (select1) {
                 case "1" -> {
-                    //examTest = teacherMenu.addNewExam(sc);
-                    //teacherMenu.writeExamFile(examTest, dir2);
+                   Exam exam = examService.getExam(sc);
+                    System.out.println(exam);
                 }
                 case "2" -> {}//examService.getStatistics();
                 case "3" -> {
