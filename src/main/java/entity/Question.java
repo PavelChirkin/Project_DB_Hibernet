@@ -1,13 +1,13 @@
 package entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -26,6 +26,8 @@ public class Question {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "exam_id")
     private Exam exam;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<ExamAttemptAnswer> examAttemptAnswers;
 
     public Question(Integer number, String body, String choiceA, String choiceB, String choiceC,
                     String correctChoice)

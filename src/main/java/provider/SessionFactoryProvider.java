@@ -28,8 +28,8 @@ public class SessionFactoryProvider {
             configuration.addAnnotatedClass(User.class);
             configuration.addAnnotatedClass(Exam.class);
             configuration.addAnnotatedClass(Question.class);
-            //configuration.addAnnotatedClass(ExamAttempt.class);
-            //configuration.addAnnotatedClass(ExamAttemptAnswer.class);
+            configuration.addAnnotatedClass(ExamAttempt.class);
+            configuration.addAnnotatedClass(ExamAttemptAnswer.class);
 
             StandardServiceRegistry registry = new StandardServiceRegistryBuilder().applySettings(properties).build();
             sessionFactory = configuration.buildSessionFactory(registry);
@@ -59,8 +59,8 @@ public class SessionFactoryProvider {
         properties.put(Environment.USER, "postgres");
         properties.put(Environment.PASS, "PostG2Pasha");
         properties.put(Environment.SHOW_SQL, "true");
-        //properties.put(Environment.HBM2DDL_AUTO, "update");
-        properties.put(Environment.HBM2DDL_AUTO, "create-drop");
+        properties.put(Environment.HBM2DDL_AUTO, "update");
+        //properties.put(Environment.HBM2DDL_AUTO, "create-drop");
 
         return properties;
     }

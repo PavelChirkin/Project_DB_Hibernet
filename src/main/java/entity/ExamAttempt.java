@@ -1,13 +1,14 @@
 package entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.Set;
 
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -17,14 +18,14 @@ public class ExamAttempt {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     //@Column(nullable = false, length = 50)
-    private Integer number;
-    private String body;
-    private String choice_A;
-    private String choice_B;
-    private String choice_C;
-    private char correctChoice;
+    private Timestamp timestamp;
+    private double evaluationRate;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "exam_id")
     private Exam exam;
-
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<ExamAttemptAnswer> examAttemptAnswers;
+    public ExamAttempt(Timestamp data) {
+        this.timestamp = timestamp;
+    }
 }

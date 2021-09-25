@@ -25,7 +25,7 @@ public class ExamRepository extends AbstractRepository{
         changeEntity(session -> session.delete(exam));
     }
 
-    public Exam getExam(int number) {
-        return getEntityInformation(session -> session.get(Exam.class, number));
+    public Exam getExam(Long id) {
+        return getEntityInformation(session -> session.get(Exam.class, id));
     }
 }

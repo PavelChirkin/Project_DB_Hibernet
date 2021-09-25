@@ -38,6 +38,7 @@ public class ConsoleLoginService {
     }
 
     public User login(Scanner sc) {
+        users = userRepository.getUsers();
         System.out.println("*** User login ***");
         System.out.println("Insert username");
         String userName = sc.nextLine();

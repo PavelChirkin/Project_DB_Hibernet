@@ -2,8 +2,10 @@ import entity.Exam;
 import entity.User;
 
 //import service.UserService;
+import repository.ExamAttemptRepository;
 import repository.ExamRepository;
 import service.ConsoleLoginService;
+import service.ExamAttemptService;
 import service.ExamService;
 
 import java.util.Scanner;
@@ -92,6 +94,7 @@ public class Main {
     }
     public void studentMenu(User user, Scanner sc){
         ExamService examService = new ExamService();
+        ExamAttemptService examAttemptService = new ExamAttemptService();
         boolean studentWork = true;
         while (studentWork) {
             System.out.println(" ___________________________________");
@@ -105,6 +108,7 @@ public class Main {
                 case "1" -> {
                    Exam exam = examService.getExam(sc);
                     System.out.println(exam);
+                    examAttemptService.makeExamAttempt(exam, sc);
                 }
                 case "2" -> {}//examService.getStatistics();
                 case "3" -> {

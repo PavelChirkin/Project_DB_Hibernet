@@ -1,21 +1,12 @@
 package entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
-@Data
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -24,13 +15,15 @@ public class ExamAttemptAnswer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //@Column(nullable = false, length = 50)
-    private Data date;
-    // @OneToOne(cascade = CascadeType.ALL)
-    // @JoinColumn(name = "examAttempt_id")
-    // private ExamAttempt examAttempt;
-    // @OneToOne(cascade = CascadeType.ALL)
-    // @JoinColumn(name = "question_id")
-    // private Question question;
+    private String selectedAnswer;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "question_id")
+    private Question question;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "examAttempt_id")
+    private ExamAttempt examAttempt;
 
+    public ExamAttemptAnswer (String selectedAnswer) {
+        this.selectedAnswer = selectedAnswer;
+    }
 }

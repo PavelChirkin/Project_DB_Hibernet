@@ -18,14 +18,15 @@ public class Exam {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     //@Column(nullable = false)
-    private int number;
     private String name;
     @JoinColumn(name = "exam_id")
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Question> questions;
+    @JoinColumn(name = "exam_id")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<ExamAttempt> examAttempts;
 
-    public Exam(int number, String name) {
-        this.number = number;
+    public Exam(String name) {
         this.name = name;
     }
 }
