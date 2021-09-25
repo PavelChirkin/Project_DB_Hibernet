@@ -108,9 +108,11 @@ public class Main {
                 case "1" -> {
                    Exam exam = examService.getExam(sc);
                     System.out.println(exam);
-                    examAttemptService.makeExamAttempt(exam, sc);
+                    examAttemptService.makeExamAttempt(user, exam, sc);
                 }
-                case "2" -> {}//examService.getStatistics();
+                case "2" -> {
+                    examAttemptService.checkExamResults(user);
+                }//examService.getStatistics();
                 case "3" -> {
                     //isLoading = false;
                     studentWork = false;

@@ -4,15 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 
 @Data
@@ -30,7 +23,15 @@ public class User {
     private char userType;
     private String userName;
     private String password;
-   // @OneToOne(cascade = CascadeType.ALL)
-   // @JoinColumn(name = "passport_id")
-   // private Passport passport;
+    @JoinColumn(name = "user_id")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<ExamAttempt> examAttempts;
+
+    public User (String name,String surname, char userType, String userName, String password) {
+        this.name = name;
+        this.surname = surname;
+        this.userType = userType;
+        this.userName = userName;
+        this.password = password;
+    }
 }

@@ -23,7 +23,9 @@ public class ExamAttemptAnswer {
     @JoinColumn(name = "examAttempt_id")
     private ExamAttempt examAttempt;
 
-    public ExamAttemptAnswer (String selectedAnswer) {
+    public ExamAttemptAnswer (String selectedAnswer, ExamAttempt examAttempt, Question question) {
         this.selectedAnswer = selectedAnswer;
+        this.examAttempt = examAttempt;
+        this.question = question;
     }
 }

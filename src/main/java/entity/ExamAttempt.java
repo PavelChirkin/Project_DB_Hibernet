@@ -23,9 +23,15 @@ public class ExamAttempt {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "exam_id")
     private Exam exam;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<ExamAttemptAnswer> examAttemptAnswers;
-    public ExamAttempt(Timestamp data) {
+
+    public ExamAttempt(Timestamp timestamp, Exam exam, User user) {
         this.timestamp = timestamp;
+        this.exam = exam;
+        this.user = user;
     }
 }

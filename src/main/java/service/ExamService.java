@@ -1,6 +1,7 @@
 package service;
 
 import entity.Exam;
+import entity.User;
 import repository.ExamRepository;
 
 import java.util.Scanner;
@@ -29,4 +30,5 @@ public class ExamService {
         return examRepository.getExam(Id);
         //return Id;
     }
+
 }

@@ -30,7 +30,7 @@ public class ExamAttemptAnswersService {
             if(selectedAnswer.equals(q.getCorrectChoice())) {
                 counter++;
             }
-            ExamAttemptAnswer examAttemptAnswer = new ExamAttemptAnswer(selectedAnswer);
+            ExamAttemptAnswer examAttemptAnswer = new ExamAttemptAnswer(selectedAnswer, examAttempt, q);
             answersToQuestions.add(examAttemptAnswer);
         }
         //calculate evaluation rate

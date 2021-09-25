@@ -13,26 +13,16 @@ public class UserService {
     }
 
 
-    public void createUser() {
-        User user = new User(null, "Pavel", "Chirkin", 'T', "pavelch", "32165531");
-        userRepository.createNewUser(user);
-    }
-
     public void getUsers() {
         userRepository.getUsers().forEach(System.out::println);
     }
 
     public void update() {
         User user = userRepository.getUser(1L);
-
         if(user == null) {
             System.out.println("User does not exist");
             return;
         }
-
-        user.setName("Naujas vardas");
-        user.setSurname("Nauja pavarde");
-
         userRepository.updateUser(user);
     }
 

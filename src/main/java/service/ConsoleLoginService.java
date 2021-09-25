@@ -31,7 +31,7 @@ public class ConsoleLoginService {
         }else {
             userType = 'S';
         }
-        User user = new User(null, name, surname, userType, userName, password);
+        User user = new User( name, surname, userType, userName, password);
             users.add(user);
         userRepository.createNewUser(user);
         System.out.println("User successfully registered");
